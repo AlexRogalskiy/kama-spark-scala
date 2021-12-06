@@ -10,32 +10,5 @@ object Ex5_Sets extends App {
 
   val sc = spark.sparkContext
 
-  val jvmLanguages = sc.parallelize(List("Scala", "Java", "Groovy", "Kotlin", "Ceylon"))
-  val functionalLanguages = sc.parallelize(List("Scala", "Kotlin", "JavaScript", "Haskell"))
-  val webLanguages = sc.parallelize(List("PHP", "Ruby", "Perl", "PHP", "JavaScript"))
-
-  println()
-  println("----Union----")
-  val distinctLangs = webLanguages.union(jvmLanguages)
-  println(distinctLangs.toDebugString)
-  distinctLangs.collect().foreach(println)
-
-  println()
-  println("----Intersection----")
-  val intersection = jvmLanguages.intersection(functionalLanguages);
-  println(intersection.toDebugString)
-  intersection.collect().foreach(println)
-
-  println()
-  println("----Substract----")
-  val substraction = webLanguages.distinct().subtract(functionalLanguages);
-  println(substraction.toDebugString)
-  substraction.collect().foreach(println)
-
-  println()
-  println("----Cartesian----")
-  val cartestian = webLanguages.distinct().cartesian(jvmLanguages);
-  println(cartestian.toDebugString)
-  cartestian.collect().foreach(println)
 
 }

@@ -8,10 +8,4 @@ object Ex0 extends App {
     .config("spark.master", "local[2]")
     .getOrCreate()
 
-  val ds = spark.range(100000000);
-  println(s"Time is ${System.currentTimeMillis}")
-  println(ds.count())
-  println(s"Time is ${System.currentTimeMillis}")
-  println(ds.count())
-  println(s"Time is ${System.currentTimeMillis}")
 }

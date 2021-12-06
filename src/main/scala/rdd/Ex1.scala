@@ -11,9 +11,4 @@ object Ex1 extends App {
 
   val sc = spark.sparkContext
 
-  val r = List(1, 2, 3, 4, 5, 6, 7)
-
-  val ints: RDD[Int] = sc.parallelize(r)
-
-  ints.saveAsTextFile("./ints")
 }
