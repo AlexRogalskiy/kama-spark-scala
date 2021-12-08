@@ -26,7 +26,8 @@ object Ex6_Fold extends App {
   val codeRowsBySkillData = List(
     ("Java", ("Ivan", 240)),
     ("Java", ("Elena", -15)),
-    ("PHP", ("Petr", 39))
+    ("PHP", ("Petr", 39)),
+    ("PHP", ("Petr", 300))
   )
 
   val codeRowsBySkill = sc.parallelize(codeRowsBySkillData);

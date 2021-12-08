@@ -13,7 +13,8 @@ object Ex1 extends App {
 
   val r = List(1, 2, 3, 4, 5, 6, 7)
 
-  val ints: RDD[Int] = sc.parallelize(r)
+  val ints: RDD[Int] = sc.parallelize(r).coalesce(1)
+
 
   ints.saveAsTextFile("./ints")
 }

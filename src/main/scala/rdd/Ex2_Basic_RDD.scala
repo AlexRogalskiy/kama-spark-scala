@@ -3,6 +3,7 @@ package rdd
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK
 
 object Ex2_Basic_RDD extends App {
   val spark = SparkSession.builder()
@@ -14,12 +15,11 @@ object Ex2_Basic_RDD extends App {
 
   val cachedInts = sc.textFile("./ints")
     .map(x => x.toInt)
-    .cache()
+    .persist(MEMORY_AND_DISK)
 
   val doubles = cachedInts.map(x => x * 2)
   println("== Doubles")
   doubles.collect().foreach(println)
-
 
   val even = cachedInts.filter(x => x % 2 == 0)
   println("== Even")
@@ -40,18 +40,19 @@ object Ex2_Basic_RDD extends App {
 
   println("== Group");
   println(groups.groupByKey().toDebugString)
-  val array = groups.groupByKey().coalesce(3).collect()
+
+    val array = groups.groupByKey().coalesce(3).collect()
   array.foreach(println)
-  println(groups.countByKey().toString())
+  val intToLong: collection.Map[Int, Long] = groups.countByKey()
+  println(intToLong.toString())
 
 
   println("== Actions")
   println("First elem is " + cachedInts.first())
   println("Count is " + cachedInts.count())
-  println("Take(2)");
+  println("Take(2)")
+
   cachedInts.take(2).foreach(println)
-  println("Take ordered (5)");
+  println("Take ordered (5)")
   cachedInts.takeOrdered(5).foreach(println)
-
-
 }

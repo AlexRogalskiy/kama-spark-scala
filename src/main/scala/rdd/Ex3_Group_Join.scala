@@ -13,10 +13,11 @@ object Ex3_Group_Join extends App {
   val data = List(("Ivan", 240), ("Petr", 39), ("Elena", 290), ("Elena", 300))
   val codeRows: RDD[(String, Int)] = sc.parallelize(data)
 
-  println("== Reduced")
+  println("== Deduplicated")
   // Let's calculate sum of code lines by developer
   val reduced: RDD[(String, Int)] = codeRows.reduceByKey((x, y) => x + y)
-  reduced.collect().foreach(println)
+  val deduplicated: RDD[(String, Int)] = codeRows.reduceByKey((x, y) => if(x > y) x else y)
+  deduplicated.collect().foreach(println)
 
   println()
   println("== Folded")
@@ -47,7 +48,6 @@ object Ex3_Group_Join extends App {
   println(joined.toDebugString)
   joined.collect().foreach(println)
 
-
   // also we can use special operator to group values from both rdd by key
   // also we sort in DESC order
   // co-group is performing grouping in the same executor due to which its performance is always better.
@@ -59,7 +59,7 @@ object Ex3_Group_Join extends App {
   println()
   println("== CountByKey")
   println(joined.countByKey().toString())
-
+//
   // or get all values by specific key
   println()
   println("== Lookup")

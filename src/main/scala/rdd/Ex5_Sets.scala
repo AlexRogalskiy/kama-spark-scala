@@ -10,13 +10,13 @@ object Ex5_Sets extends App {
 
   val sc = spark.sparkContext
 
-  val jvmLanguages = sc.parallelize(List("Scala", "Java", "Groovy", "Kotlin", "Ceylon"))
+  val jvmLanguages = sc.parallelize(List("Scala", "Java", "Groovy", "Kotlin", "Ceylon", "PHP"))
   val functionalLanguages = sc.parallelize(List("Scala", "Kotlin", "JavaScript", "Haskell"))
-  val webLanguages = sc.parallelize(List("PHP", "Ruby", "Perl", "PHP", "JavaScript"))
+  val webLanguages = sc.parallelize(List("PHP", "Ruby", "Perl", "JavaScript", "PHP"))
 
   println()
   println("----Union----")
-  val distinctLangs = webLanguages.union(jvmLanguages)
+  val distinctLangs = webLanguages.union(jvmLanguages).distinct()
   println(distinctLangs.toDebugString)
   distinctLangs.collect().foreach(println)
 
