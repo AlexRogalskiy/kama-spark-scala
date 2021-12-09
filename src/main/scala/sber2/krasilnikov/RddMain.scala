@@ -1,6 +1,11 @@
 package sber2.krasilnikov
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.SparkSession
+
+import scala.collection.immutable
+
 
 object RddMain extends App{
   val spark = SparkSession.builder()

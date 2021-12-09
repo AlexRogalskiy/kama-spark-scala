@@ -1,21 +1,14 @@
-package sber2.trofimov
+package sber.katkov
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.SparkSession
 
-import scala.collection.immutable
+object rddAndrew extends App {
+  println("Hello, it's Andrew's scope :)")
 
-
-object RddMain extends App{
   val spark = SparkSession.builder()
     .appName("DataFrames Basics")
     .config("spark.master", "local[2]")
     .getOrCreate()
 
   val sc = spark.sparkContext
-
-
-  println("Test")
-
 }

@@ -3,6 +3,7 @@ package sber2.katkov
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
+
 import scala.collection.immutable
 
 object RddMain extends App{

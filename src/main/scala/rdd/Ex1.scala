@@ -15,6 +15,5 @@ object Ex1 extends App {
 
   val ints: RDD[Int] = sc.parallelize(r).coalesce(1)
 
-
   ints.saveAsTextFile("./ints")
 }

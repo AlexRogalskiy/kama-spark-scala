@@ -1,21 +1,11 @@
-package sber2.trofimov
-
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.rdd.RDD
+package sber.krasilnikov
 import org.apache.spark.sql.SparkSession
 
-import scala.collection.immutable
-
-
-object RddMain extends App{
+object RddMain {
   val spark = SparkSession.builder()
     .appName("DataFrames Basics")
     .config("spark.master", "local[2]")
     .getOrCreate()
 
   val sc = spark.sparkContext
-
-
-  println("Test")
-
 }
