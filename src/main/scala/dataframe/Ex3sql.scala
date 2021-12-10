@@ -11,7 +11,7 @@ object Ex3sql extends App {
   // ASSERT: Files should exists
   val stateNames = spark.read.parquet("C:\\Users\\Vadim\\IdeaProjects\\kama-spark-scala\\nationalNames-pq")
   stateNames.show()
-  stateNames.printSchema()
+  stateNames.explain()
 
   stateNames.createOrReplaceTempView("stateNames")
 
